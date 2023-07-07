@@ -1,10 +1,10 @@
 FROM alpine:3.13
 
 ENV OCSERV_VERSION 1.1.2
-ENV CA_CN SAMPLE CA
-ENV CA_ORG Big Corp
-ENV SRV_CN SAMPLE server
-ENV SRV_ORG MyCompany
+ENV CA_CN VPN Server
+ENV CA_ORG Optimum Info
+ENV SRV_CN vpn.optimuminfo.com
+ENV SRV_ORG Optimum Info
 RUN set -ex \
     && apk add --no-cache --virtual .build-dependencies \
     readline-dev \
@@ -65,7 +65,7 @@ RUN set -ex \
     && rm -rf /var/cache/apk/*
 WORKDIR /etc/ocserv
 COPY ocserv.conf /etc/ocserv/ocserv.conf
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh 
 EXPOSE 443/tcp
 EXPOSE 443/udp
 ENTRYPOINT ["sh", "/entrypoint.sh"]
